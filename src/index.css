@@ -1,0 +1,123 @@
+:root {
+  --COLOR_PRIMARY: #202020;
+  --COLOR_SECONDARY: #343434;
+  --COLOR_BACKGROUND: #282828;
+  --COLOR_TEXT_PRIMARY: #ffffff;
+  --COLOR_TEXT_SECONDARY: #7a7a7a;
+  --COLOR_HIGHLIGHT: #87c876;
+  --TITLE_HEIGHT: 125px;
+}
+
+@font-face {
+  font-family: Bebas;
+  src: url('./font/Bebas-Regular.ttf');
+}
+
+@font-face {
+  font-family: Louis;
+  src: url('./font/Louis-George-Cafe.ttf');
+}
+
+.text-bebas {
+  font-family: Bebas;
+}
+
+.text-louis {
+  font-family: Louis;
+}
+
+.text-xl {
+  font-size: 4.50rem;
+}
+
+.text-l {
+  font-size: 1.50rem;
+}
+
+.text-m {
+  font-size: 1.25rem;
+}
+
+.text-s {
+  font-size: 0.75rem;
+}
+
+.form-control::placeholder {
+  color: white
+}
+
+body {
+  color: var(--COLOR_TEXT_PRIMARY);
+  background-color: var(--COLOR_BACKGROUND);
+  margin: 0;
+}
+
+.img-icon {
+  height: 25px;
+  width: 25px;
+}
+
+.img-icon-big {
+  height: 75px;
+  width: 75px;
+}
+
+.container-title {
+  background-image: url('./img/fjords.png');
+  background-color: var(--COLOR_SECONDARY);
+  background-size: 100% auto;
+  background-position: center;
+  height: var(--TITLE_HEIGHT);
+  width: 100%;
+  margin: 0 auto 0 auto;
+  padding: 0 50px 5px 50px;
+  text-align: center;
+  position: fixed;
+  filter: drop-shadow(0 0 0.8rem var(--COLOR_PRIMARY));
+  z-index: 2;
+}
+
+.button-focus, button:hover {
+  outline: none;
+  color: var(--COLOR_HIGHLIGHT);
+  border-color: transparent;
+  background-color: var(--COLOR_SECONDARY);
+}
+
+.container-main {
+  background-color: var(--COLOR_BACKGROUND);
+  color: var(--COLOR_TEXT_PRIMARY);
+  height:2500px
+}
+
+.container-body {
+  background-color: var(--COLOR_PRIMARY);
+  height: 2030px;
+  width: 1000px;
+  margin: auto;
+  margin-bottom: 100px;
+  padding: 50px;
+  padding-top: calc(var(--TITLE_HEIGHT) + 50px);
+  position: relative;
+  filter: drop-shadow(0 0 0.8rem var(--COLOR_PRIMARY));
+}
+
+.container-form-question {
+  border-radius: 5px;
+  background-color: var(--COLOR_SECONDARY);
+  filter: drop-shadow(0 0 0.8rem var(--COLOR_PRIMARY));
+  padding: 30px;
+}
+
+.container-form-prompt {
+  margin-bottom: 15px;
+}
+
+.container-button {
+  margin-top: 50px;
+  text-align: right;
+}
+
+.container-error {
+  text-align: center;
+}
