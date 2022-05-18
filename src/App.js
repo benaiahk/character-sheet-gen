@@ -153,7 +153,7 @@ function App() {
       setFormComplete(true);
     }
   }
-  
+
   const {
     loading,
     submitted,
@@ -221,9 +221,6 @@ function App() {
               DOWNLOAD
             </Button>
             <br /><br />
-            <span className='text-louis text-m' style={{ color: '#7a7a7a' }}>
-              *Email the results to benaiahkilen@gmail.com!
-            </span>
           </div>
         </div>
       </div>
