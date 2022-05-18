@@ -1,5 +1,5 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import UseEmail from "./UseEmail";
 import { React, useState, useEffect } from 'react';
 import Slider from '@mui/material/Slider';
 import Stack from '@mui/material/Stack';
@@ -18,6 +18,8 @@ function App() {
     STEP_SIZE: 1
   }
 
+  const [formComplete, setFormComplete] = useState(false);
+  const [formError, setFormError] = useState(false);
   const [remainingPoints, setRemainingPoints] = useState(formSettings.TOTAL_POINTS);
   const [characterName, setCharacterName] = useState('');
   const [attributes, setAttributes] = useState({
@@ -138,22 +140,26 @@ function App() {
 
   const handleDownload = (event) => {
     event.preventDefault();
-    downloadFile({
+    sendEmail({
       data: JSON.stringify({
         characterName: characterName,
         attributes: { ...attributes, Quirkiness: remainingPoints }
-      }),
-      fileName: `${characterName}.json`,
-      fileType: 'text/json'
+      })
     });
-  }
-
-  // Theme overrides
-  const styles = theme => ({
-    multilineColor: {
-      color: 'white'
+    
+    if (error) {
+      setFormError(true);
+    } else {
+      setFormComplete(true);
     }
-  })
+  }
+  
+  const {
+    loading,
+    submitted,
+    error,
+    sendEmail
+  } = UseEmail('https://public.herotofu.com/v1/62c14060-d6cb-11ec-81bd-9d40629c0f02');
 
   return (
     <div className='container-main'>
@@ -163,53 +169,62 @@ function App() {
         </span>
       </div>
       <div className='container-body' id='body'>
-        <div className='text-louis text-m' style={{
-          margin: 'auto',
-          width: '60%',
-          backgroundColor: '#343434',
-          borderRadius: '5px',
-          padding: '40px',
-          paddingTop: '10px'
-        }}>
-          <TextField
-            value={characterName}
-            variant='filled'
-            label='Character Name'
-            error={!characterName}
-            required={true}
-            autoFocus={true}
-            fullWidth={true}
-            size='normal'
-            color='success'
-            onChange={(event) => { setCharacterName(event.target.value); }}
-            sx={{
-              label: { color: '#7a7a7a', fontSize: '1.25rem' },
-              input: { color: 'white', fontSize: '1.25rem', backgroundColor: '#343434' }
-            }}
-          />
+        <div className='formComplete text-louis' hidden={!formComplete} style={{textAlign:'center'}}>
+          <h2>Thanks for submitting your form!</h2>
         </div>
-        <br /><br />
-        <span className='text-m text-louis'>
-          Remaining Points: {remainingPoints}
+        <div className='formError text-louis' hidden={!formError} style={{textAlign:'center'}}>
+          <h2 style={{color: 'red'}}>An Error Occurred</h2>
+          {error}
+        </div>
+        <div id='form' hidden={formComplete}>
+          <div className='text-louis text-m' style={{
+            margin: 'auto',
+            width: '60%',
+            backgroundColor: '#343434',
+            borderRadius: '5px',
+            padding: '40px',
+            paddingTop: '10px'
+          }}>
+            <TextField
+              value={characterName}
+              variant='filled'
+              label='Character Name'
+              error={!characterName}
+              required={true}
+              autoFocus={true}
+              fullWidth={true}
+              size='normal'
+              color='success'
+              onChange={(event) => { setCharacterName(event.target.value); }}
+              sx={{
+                label: { color: '#7a7a7a', fontSize: '1.25rem' },
+                input: { color: 'white', fontSize: '1.25rem', backgroundColor: '#343434' }
+              }}
+            />
+          </div>
           <br /><br />
-        </span>
-        <Stack spacing={5}>
-          {generateForm()}
-        </Stack>
-        <div className='container-button'>
-          <Button
-            onClick={handleDownload}
-            variant='contained'
-            startIcon={<SaveIcon />}
-            size='large'
-            disabled={!characterName}
-            sx={{ backgroundColor: '#87c876', width: '200px', height: '50px' }}>
-            DOWNLOAD
-          </Button>
-          <br /><br />
-          <span className='text-louis text-m' style={{ color: '#7a7a7a' }}>
-            *Email the results to benaiahkilen@gmail.com!
+          <span className='text-m text-louis'>
+            Remaining Points: {remainingPoints}
+            <br /><br />
           </span>
+          <Stack spacing={5}>
+            {generateForm()}
+          </Stack>
+          <div className='container-button'>
+            <Button
+              onClick={handleDownload}
+              variant='contained'
+              startIcon={<SaveIcon />}
+              size='large'
+              disabled={!characterName || formError || formComplete}
+              sx={{ backgroundColor: '#87c876', width: '200px', height: '50px' }}>
+              DOWNLOAD
+            </Button>
+            <br /><br />
+            <span className='text-louis text-m' style={{ color: '#7a7a7a' }}>
+              *Email the results to benaiahkilen@gmail.com!
+            </span>
+          </div>
         </div>
       </div>
     </div>
