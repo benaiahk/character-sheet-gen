@@ -92,7 +92,6 @@ body {
 
 .container-body {
   background-color: var(--COLOR_PRIMARY);
-  height: 2030px;
   width: 1000px;
   margin: auto;
   margin-bottom: 100px;

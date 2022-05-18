@@ -146,7 +146,7 @@ function App() {
         attributes: { ...attributes, Quirkiness: remainingPoints }
       })
     });
-    
+
     if (error) {
       setFormError(true);
     } else {
@@ -164,16 +164,17 @@ function App() {
   return (
     <div className='container-main'>
       <div className='container-title'>
+        <br/>
         <span className='text-bebas text-xl'>
           Personality <span style={{ color: '#87c876' }}>Survey</span>
         </span>
       </div>
       <div className='container-body' id='body'>
-        <div className='formComplete text-louis' hidden={!formComplete} style={{textAlign:'center'}}>
+        <div className='formComplete text-louis' hidden={!formComplete} style={{ textAlign: 'center' }}>
           <h2>Thanks for submitting your form!</h2>
         </div>
-        <div className='formError text-louis' hidden={!formError} style={{textAlign:'center'}}>
-          <h2 style={{color: 'red'}}>An Error Occurred</h2>
+        <div className='formError text-louis' hidden={!formError} style={{ textAlign: 'center' }}>
+          <h2 style={{ color: 'red' }}>An Error Occurred</h2>
           {error}
         </div>
         <div id='form' hidden={formComplete}>
