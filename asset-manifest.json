@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/character-sheet-gen/static/css/main.3cc14fb6.css",
-    "main.js": "/character-sheet-gen/static/js/main.740c0720.js",
+    "main.js": "/character-sheet-gen/static/js/main.388ee26f.js",
     "static/js/787.9464add9.chunk.js": "/character-sheet-gen/static/js/787.9464add9.chunk.js",
     "static/media/fjords.png": "/character-sheet-gen/static/media/fjords.916952505d9c81994426.png",
     "static/media/Louis-George-Cafe.ttf": "/character-sheet-gen/static/media/Louis-George-Cafe.17cd25f83710eb436d1e.ttf",
     "static/media/Bebas-Regular.ttf": "/character-sheet-gen/static/media/Bebas-Regular.90dabffdfc7cafc45f81.ttf",
     "index.html": "/character-sheet-gen/index.html",
     "main.3cc14fb6.css.map": "/character-sheet-gen/static/css/main.3cc14fb6.css.map",
-    "main.740c0720.js.map": "/character-sheet-gen/static/js/main.740c0720.js.map",
+    "main.388ee26f.js.map": "/character-sheet-gen/static/js/main.388ee26f.js.map",
     "787.9464add9.chunk.js.map": "/character-sheet-gen/static/js/787.9464add9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3cc14fb6.css",
-    "static/js/main.740c0720.js"
+    "static/js/main.388ee26f.js"
   ]
 }
